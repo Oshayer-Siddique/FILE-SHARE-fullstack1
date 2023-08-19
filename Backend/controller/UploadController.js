@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const path = require("path");
 
+const FileMetadata = require("../models/file");
 
 
 
@@ -30,12 +31,48 @@ const uploadFile = multer({ storage }).array('file',10);
 
 const upload = async (req, res) => {
 
+  
+
   await uploadFile(req,res,(err) => {
     if(err){
       res.status(500).send("file upload fail");
 
     }
-    res.send("FILE UPLOAD OK");
+    let authorization  = req.cookies[process.env.COOKIE_NAME];
+    const decoded = jwt.verify(authorization,process.env.secret_key);
+    const uploadername = decoded.username;
+
+
+    const uploader = uploadername;
+
+    const uploadedFile  = req.files;
+    const response_data = {
+      info1 : uploadedFile,
+      info2 : uploader,
+    }
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    res.send(response_data);
+    
+
+
+
+
+
+
+
+    
+
   })
 
 };
