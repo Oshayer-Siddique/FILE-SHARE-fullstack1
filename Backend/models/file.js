@@ -2,25 +2,21 @@ const mongoose = require("mongoose");
 
 
 const fileMetatdataSchema = new mongoose.Schema({
-    filename: {
+    originalname: {
         type: String,
-        required: true
+        
       },
-      size: {
-        type: Number,
-        required: true
-      },
-      contentType: {
-        type: String,
-        required: true
-      },
+    mimetype:{
+      type: String,
+    },
+
       uploadDate: {
         type: Date,
         default: Date.now
       },
       uploader :{
         type : String,
-        required:true,
+        
       }
 })
 

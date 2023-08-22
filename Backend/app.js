@@ -37,6 +37,7 @@ dotenv.config();
 const RegisterRouter = require('./router/RegisterRouter');
 const LoginRouter = require('./router/LoginRouter');
 const UploadRouter = require('./router/UploadRouter');
+const SeachRouter = require('./router/SearchRouter');
 
 
 
@@ -44,6 +45,7 @@ const UploadRouter = require('./router/UploadRouter');
 app.use('/',RegisterRouter);
 app.use('/',LoginRouter);
 app.use('/',UploadRouter);
+app.use('/',SeachRouter);
 
 
 
