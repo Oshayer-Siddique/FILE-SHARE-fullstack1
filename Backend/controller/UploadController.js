@@ -43,7 +43,7 @@ const upload = async (req, res) => {
 
     //console.log(response_data);
     var info1 = response_data.info1;
-    console.log(info1);
+    //console.log(info1);
 
     //console.log(info1.length);
 
