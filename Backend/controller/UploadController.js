@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs");
 
 const FileMetadata = require("../models/file");
 
@@ -25,7 +26,7 @@ const storage = multer.diskStorage({
 const uploadFile = multer({ storage }).array("file", 10);
 
 const upload = async (req, res) => {
-  await uploadFile(req, res, (err) => {
+  await uploadFile(req, res,  (err) => {
     if (err) {
       res.status(500).send("file upload fail");
     }
@@ -81,7 +82,49 @@ const upload = async (req, res) => {
   });
 };
 
+
+const getListFiles = async(req,res) => {
+  const filemetadata = await FileMetadata.find({},'originalname');
+
+  const fileNames = filemetadata.map(filemetadata => filemetadata.originalname);
+  res.send(fileNames);
+
+
+
+}
+
+
+const download = (req,res) =>{
+  const filename = req.params.filename;
+  console.log(filename);
+  const directoryPath = path.join('H:', 'Full Stack Project', 'Project1', 'Backend', 'UPLOAD_FOLDER',filename);
+  
+
+  // if (fs.existsSync(directoryPath)) {
+  //   res.send('Directory exists.');
+  // } else {
+  //   res.send('Directory does not exist.');
+  // }
+
+
+  res.download(directoryPath,filename => {})
+
+}
+
+
+
+
+
+
+
+
+
+
+
 module.exports = {
   upload,
+  getListFiles,
+  download,
+  
   
 };

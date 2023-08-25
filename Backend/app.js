@@ -30,6 +30,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
+app.use(express.static(path.join(__dirname, 'UPLOAD_FOLDER')));
+
 
 //console.log("Hello Oshayer");
 dotenv.config();

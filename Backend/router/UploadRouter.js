@@ -3,9 +3,12 @@ const express = require('express')
 const router = express.Router();
 
 
-const {upload} = require('../controller/UploadController');
+const {upload,getListFiles,download} = require('../controller/UploadController');
 
 router.post('/upload',upload);
+router.get('/files',getListFiles);
+router.get('/download/:filename',download);
+
 
 
 
