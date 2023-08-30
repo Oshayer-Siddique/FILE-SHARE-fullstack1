@@ -40,6 +40,8 @@ const RegisterRouter = require('./router/RegisterRouter');
 const LoginRouter = require('./router/LoginRouter');
 const UploadRouter = require('./router/UploadRouter');
 const SeachRouter = require('./router/SearchRouter');
+const P2PShareRouter = require('./router/P2PShareRouter');
+
 
 
 
@@ -48,6 +50,7 @@ app.use('/',RegisterRouter);
 app.use('/',LoginRouter);
 app.use('/',UploadRouter);
 app.use('/',SeachRouter);
+app.use('/',P2PShareRouter);
 
 
 

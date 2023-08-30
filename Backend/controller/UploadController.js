@@ -6,6 +6,8 @@ const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const uuid = require('uuid');
+
 
 const FileMetadata = require("../models/file");
 
@@ -56,6 +58,13 @@ const upload = async (req, res) => {
         var item = info1[i];
         var originalname = item.originalname;
         var mimetype = item.mimetype;
+        var size = item.size;
+        var path = item.path;
+       
+
+    
+
+
 
 
 
@@ -66,6 +75,10 @@ const upload = async (req, res) => {
           originalname,
           mimetype,
           uploader,
+          size,
+          path,
+          
+          
         });
  
         newFileMetatdata.save();
@@ -106,11 +119,12 @@ const download = (req,res) =>{
   //   res.send('Directory does not exist.');
   // }
 
+  //res.send(directoryPath);
+
 
   res.download(directoryPath,filename => {})
 
 }
-
 
 
 
