@@ -13,7 +13,7 @@ const app = express();
 mongodb://127.0.0.1:27017/Project1
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/Project1", {
+  .connect("mongodb+srv://oshayersiddique2001:F8rxwIKDqeREkjmS@cluster3.fuqlsyt.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -44,7 +44,9 @@ const P2PShareRouter = require('./router/P2PShareRouter');
 
 
 
-
+app.get('/',(req,res)=>{
+  res.send("Hello Oshayer");
+})
 
 app.use('/',RegisterRouter);
 app.use('/',LoginRouter);
